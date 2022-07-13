@@ -101,10 +101,13 @@ if __name__ == "__main__":
                     box_h = y2 - y1
                     color = [int(c) for c in colors[int(cls_pred)]]
                     print("Se detectó {} en X1: {}, Y1: {}, X2: {}, Y2: {}".format(classes[int(cls_pred)], x1, y1, x2, y2))
-                    frame = cv2.rectangle(frame, (x1, y1 + box_h), (x2, y1), color, 5)
-                    cv2.putText(frame, classes[int(cls_pred)], (x1, y1), cv2.FONT_HERSHEY_SIMPLEX, 1, color, 5)# Nombre de la clase detectada
-                    cv2.putText(frame, str("%.2f" % float(conf)), (x2, y2 - box_h), cv2.FONT_HERSHEY_SIMPLEX, 0.5,color, 5) # Certeza de prediccion de la clase
-        #
+                    frame = cv2.rectangle(frame, (int(x1), int(y1) + int(box_h)), (int(x2), int(y1)), color, 5)
+                    cv2.putText(frame, classes[int(cls_pred)], (int(x1), int(y1)), cv2.FONT_HERSHEY_SIMPLEX, 1, color, 5) #Nombre de la clase
+                    # cv2.putText(frame, str("%.2f" % float(conf)), (x2, int(y2 - box_h)), cv2.FONT_HERSHEY_SIMPLEX, 0.5,color, 5) # Certeza de prediccion de la clase
+                    # frame = cv2.rectangle(frame, (x1, y1 + box_h), (x2, y1), color, 5)
+                    # cv2.putText(frame, classes[int(cls_pred)], (x1, y1), cv2.FONT_HERSHEY_SIMPLEX, 1, color, 5)# Nombre de la clase detectada
+                    # cv2.putText(frame, str("%.2f" % float(conf)), (x2, y2 - box_h), cv2.FONT_HERSHEY_SIMPLEX, 0.5,color, 5) # Certeza de prediccion de la clase
+        # 
         #Convertimos de vuelta a BGR para que cv2 pueda desplegarlo en los colores correctos
         
         if opt.webcam==1:
